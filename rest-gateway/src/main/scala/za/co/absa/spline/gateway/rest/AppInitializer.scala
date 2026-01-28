@@ -22,9 +22,10 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import za.co.absa.spline.common.webmvc.AppInitializerUtils.{registerFilter, registerRESTDispatcher, registerRootDispatcher}
 import za.co.absa.spline.common.webmvc.cors.PermissiveCorsFilter
 import za.co.absa.spline.common.webmvc.diagnostics.{DiagnosticsRESTConfig, RootWebContextConfig}
-import za.co.absa.spline.consumer.rest.ConsumerRESTConfig
-import za.co.absa.spline.consumer.service.ConsumerServicesConfig
-import za.co.absa.spline.persistence.ArangoRepoConfig
+// import za.co.absa.spline.consumer.rest.ConsumerRESTConfig
+// import za.co.absa.spline.consumer.service.ConsumerServicesConfig
+// import za.co.absa.spline.persistence.ArangoRepoConfig
+import za.co.absa.spline.persistence.SpannerRepoConfig
 import za.co.absa.spline.producer.rest.ProducerRESTConfig
 import za.co.absa.spline.producer.rest.filter.{GzipFilter, MessageLengthCapturingFilter}
 import za.co.absa.spline.producer.service.ProducerServicesConfig
@@ -37,9 +38,10 @@ object AppInitializer extends WebApplicationInitializer {
       .addListener(new ContextLoaderListener(new AnnotationConfigWebApplicationContext {
         setAllowBeanDefinitionOverriding(false)
         register(
-          classOf[ConsumerServicesConfig],
+          // classOf[ConsumerServicesConfig],
           classOf[ProducerServicesConfig],
-          classOf[ArangoRepoConfig])
+          // classOf[ArangoRepoConfig]
+          classOf[SpannerRepoConfig])
       }))
 
     registerFilter[PermissiveCorsFilter](container, "CORSFilter", "/*")
@@ -47,7 +49,7 @@ object AppInitializer extends WebApplicationInitializer {
     registerFilter[GzipFilter](container, "GzipFilter", "/*")
     registerFilter[MessageLengthCapturingFilter](container, "MessageSizeCapturingFilter_after_gzip", "/*")
 
-    registerRESTDispatcher[ConsumerRESTConfig](container, "consumer")
+    // registerRESTDispatcher[ConsumerRESTConfig](container, "consumer")
     registerRESTDispatcher[ProducerRESTConfig](container, "producer")
     registerRESTDispatcher[DiagnosticsRESTConfig](container, "about")
 

@@ -27,6 +27,7 @@
 
     <artifactId>persistence</artifactId>
 
+
     <dependencies>
         <dependency>
             <groupId>za.co.absa.spline</groupId>
@@ -79,6 +80,7 @@
             <artifactId>spring-context</artifactId>
         </dependency>
 
+
         <!-- ArangoDB -->
 
         <dependency>
@@ -92,6 +94,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-scala_${scala.compat.version}</artifactId>
+        </dependency>
+
+        <!-- Google Cloud Spanner -->
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-spanner</artifactId>
         </dependency>
 
         <!-- test scope -->

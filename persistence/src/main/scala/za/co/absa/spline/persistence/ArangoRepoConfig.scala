@@ -25,7 +25,7 @@ import za.co.absa.spline.common.config.DefaultConfigurationStack
 import za.co.absa.spline.common.scala13.Option
 import za.co.absa.spline.common.security.TLSUtils
 
-@Configuration
+// @Configuration
 class ArangoRepoConfig extends InitializingBean with LazyLogging {
 
   import za.co.absa.spline.persistence.ArangoRepoConfig._
